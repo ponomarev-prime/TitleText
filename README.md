@@ -11,6 +11,7 @@ RGB https://www.rapidtables.com/web/color/RGB_Color.html
 ---
 
 `back_img.py` создаёт бекграунд. 
+
 ---
 
 `text_gen2.py` содаёт избражение с текстом из бекграунда.
