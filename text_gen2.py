@@ -2,7 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 BACKGROUND_IMAGE_FILENAME = 'cookie_cutter_background_cropped.png'
 RESULT_IMAGE_FILENAME = 'cookie_cutter_text_result.png'
-THE_TEXT = 'AX2048'
+THE_TEXT = 'PONOMAREV.PRIME'
 FONT_NAME = 'Archangelsk.ttf'  # Arial Bold
 
 # Read the background image and convert to an RGB image with Alpha.
@@ -16,7 +16,9 @@ with open(BACKGROUND_IMAGE_FILENAME, 'rb') as file:
 fgr_img = Image.new('RGBA', bgr_img.size, color=(13, 17, 23)) # (13, 17, 23) (0, 0, 0, 0)
 
 font_size = bgr_img_width//len(THE_TEXT)
-font = ImageFont.truetype(FONT_NAME, font_size)
+print(font_size)
+
+font = ImageFont.truetype(FONT_NAME, font_size+128) # Размер шрифта
 
 txt_width, txt_height = font.getsize(THE_TEXT)  # Size of text w/font if rendered.
 tx, ty = cx - txt_width//2, cy - txt_height//2  # Center of text.
