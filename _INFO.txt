@@ -1,0 +1,5 @@
+python3 -m venv venv
+
+pip install Pillow
+
+https://gist.github.com/weihanglo/1e754ec47fdd683a42fdf6a272904535
