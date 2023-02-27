@@ -13,4 +13,4 @@ y = (768 - textheight) / 2
 gradient = [(0, 0, 255), (255, 0, 255)]
 d.text((x, y), text, font=fnt, fill=(51, 255, 51))
 
-img.save('image.png')
+img.save('pil_image.png')

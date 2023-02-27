@@ -14,4 +14,4 @@ f_co = (253, 46, 216)
 t_co = (23, 214, 255)
 for i, color in enumerate(interpolate(f_co, t_co, gradient.width * 2)):
     draw.line([(i, 0), (0, i)], tuple(color), width=1)
-gradient.save('cookie_cutter_background_cropped.png')
+gradient.save('background_image.png')

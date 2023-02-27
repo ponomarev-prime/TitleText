@@ -15,3 +15,9 @@ RGB https://www.rapidtables.com/web/color/RGB_Color.html
 ---
 
 `text_gen2.py` содаёт избражение с текстом из бекграунда.
+
+---
+
+Как это работает:
+
+![](title_text.png)

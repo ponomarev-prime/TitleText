@@ -1,8 +1,8 @@
 from PIL import Image, ImageDraw, ImageFont
 
-BACKGROUND_IMAGE_FILENAME = 'cookie_cutter_background_cropped.png'
-RESULT_IMAGE_FILENAME = 'cookie_cutter_text_result.png'
-THE_TEXT = 'PONOMAREV.PRIME'
+BACKGROUND_IMAGE_FILENAME = 'background_image.png'
+RESULT_IMAGE_FILENAME = 'result_image.png'
+THE_TEXT = 'TITLE.TEXT'
 FONT_NAME = 'Archangelsk.ttf'  # Arial Bold
 
 # Read the background image and convert to an RGB image with Alpha.
@@ -18,7 +18,7 @@ fgr_img = Image.new('RGBA', bgr_img.size, color=(13, 17, 23)) # (13, 17, 23) (0,
 font_size = bgr_img_width//len(THE_TEXT)
 print(font_size)
 
-font = ImageFont.truetype(FONT_NAME, font_size+128) # Размер шрифта
+font = ImageFont.truetype(FONT_NAME, font_size+128) # Размер шрифта; +128 Для обложки VK.
 
 txt_width, txt_height = font.getsize(THE_TEXT)  # Size of text w/font if rendered.
 tx, ty = cx - txt_width//2, cy - txt_height//2  # Center of text.
