@@ -1,8 +1,8 @@
 from PIL import Image, ImageDraw, ImageFont
 
 BACKGROUND_IMAGE_FILENAME = 'background_image.png'
-RESULT_IMAGE_FILENAME = 'result_image.png'
-THE_TEXT = 'TITLE.TEXT'
+RESULT_IMAGE_FILENAME = 'BEGET_ADM_white_g.png'
+THE_TEXT = 'BEGET ADM INTRO'
 FONT_NAME = 'Archangelsk.ttf'  # Arial Bold
 
 # Read the background image and convert to an RGB image with Alpha.
@@ -13,7 +13,7 @@ with open(BACKGROUND_IMAGE_FILENAME, 'rb') as file:
     cx, cy = bgr_img_width//2, bgr_img_height//2  # Center of image.
 
 # Create a transparent foreground to be result of non-text areas.
-fgr_img = Image.new('RGBA', bgr_img.size, color=(13, 17, 23)) # (13, 17, 23) (0, 0, 0, 0)
+fgr_img = Image.new('RGBA', bgr_img.size, color=(255, 255, 255)) # Git balck: (13, 17, 23) Zero: (0, 0, 0, 0) Google doc black: (27, 27, 27) Google white: (255, 255, 255)
 
 font_size = bgr_img_width//len(THE_TEXT)
 print(font_size)
