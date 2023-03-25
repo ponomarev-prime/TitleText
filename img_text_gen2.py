@@ -21,12 +21,12 @@ with open(BACKGROUND_IMAGE_FILE, 'rb') as file:
     cx, cy = bgr_img_width//2, bgr_img_height//2  # Center of image.
 
 # Create a transparent foreground to be result of non-text areas.
-fgr_img = Image.new('RGBA', bgr_img.size, color=(tuple(map(int, BACKGROUND_COLOUR.split(', '))))) # Git balck: (13, 17, 23) Zero: (0, 0, 0, 0) Google doc black: (27, 27, 27) Google white: (255, 255, 255)
+fgr_img = Image.new('RGBA', bgr_img.size, color=(tuple(map(int, BACKGROUND_COLOUR.split(', ')))))
 
 font_size = bgr_img_width//len(THE_TEXT)
 print(font_size)
 
-font = ImageFont.truetype(FONT_FILE, font_size + int(COEF_FONT_SIZE)) # Размер шрифта; +128 Для обложки VK.
+font = ImageFont.truetype(FONT_FILE, font_size + int(COEF_FONT_SIZE))
 
 txt_width, txt_height = font.getsize(THE_TEXT)  # Size of text w/font if rendered.
 tx, ty = cx - txt_width//2, cy - txt_height//2  # Center of text.

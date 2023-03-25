@@ -23,7 +23,7 @@ def interpolate(f_co, t_co, interval):
         yield [round(f + det * i) for f, det in zip(f_co, det_co)]
 
 
-imgsize=(int(RES_WIDTH),int(RES_HEIGHT)) # 2K 2560,1440 ; FHD 1920,1080 ; VK обложка 2х 3840,1536 ;
+imgsize=(int(RES_WIDTH),int(RES_HEIGHT))
 gradient = Image.new('RGBA', imgsize, color=0)
 draw = ImageDraw.Draw(gradient)
 

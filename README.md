@@ -44,4 +44,6 @@ BACKGROUND_IMAGE_FILE: data\background_image.png - файл фонового и�
 
 ---
 
-`baranch rm`
+Colours: Git balck: (13, 17, 23) Zero: (0, 0, 0, 0) Google doc black: (27, 27, 27) Google white: (255, 255, 255)
+
+Resolution: 2K 2560,1440 ; FHD 1920,1080 ; VK обложка 2х 3840,1536 ;
