@@ -43,3 +43,5 @@ BACKGROUND_IMAGE_FILE: data\background_image.png - файл фонового и�
 ```
 
 ---
+
+`baranch rm`
