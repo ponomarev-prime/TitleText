@@ -5,13 +5,21 @@ import configparser
 config = configparser.ConfigParser()
 config.read("config.ini", encoding="utf-8-sig")
 
-
 BACKGROUND_IMAGE_FILE = config.get("common", "BACKGROUND_IMAGE_FILE")
 BACKGROUND_COLOUR = config.get("text_gen", "BACKGROUND_COLOUR")
 FONT_FILE = config.get("text_gen", "FONT_FILE")
 COEF_FONT_SIZE = config.get("text_gen", "COEF_FONT_SIZE")
 THE_TEXT = config.get("text_gen", "THE_TEXT")
 RESULT_IMAGE_FILE = config.get("text_gen", "RESULT_IMAGE_FILE")
+
+print('')
+print(f'Background file :: {BACKGROUND_IMAGE_FILE}')
+print(f'Background colour :: {BACKGROUND_COLOUR}')
+print(f'Font file :: {FONT_FILE}')
+print(f'Font size correction :: {COEF_FONT_SIZE}')
+print(f'Text :: {THE_TEXT}')
+print(f'Result image file :: {RESULT_IMAGE_FILE}')
+print('')
 
 # Read the background image and convert to an RGB image with Alpha.
 with open(BACKGROUND_IMAGE_FILE, 'rb') as file:
@@ -24,7 +32,7 @@ with open(BACKGROUND_IMAGE_FILE, 'rb') as file:
 fgr_img = Image.new('RGBA', bgr_img.size, color=(tuple(map(int, BACKGROUND_COLOUR.split(', ')))))
 
 font_size = bgr_img_width//len(THE_TEXT)
-print(font_size)
+print(f'Font size without corr :: {font_size}\n')
 
 font = ImageFont.truetype(FONT_FILE, font_size + int(COEF_FONT_SIZE))
 
