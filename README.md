@@ -44,6 +44,6 @@ BACKGROUND_IMAGE_FILE: data\background_image.png - файл фонового и�
 
 ---
 
-Colours: Git balck: (13, 17, 23) Zero: (0, 0, 0, 0) Google doc black: (27, 27, 27) Google white: (255, 255, 255)
+Colours: Git balck: (13, 17, 23) Zero: (0, 0, 0, 0) Google doc black: (27, 27, 27) Google white: (255, 255, 255); VS 169, 220, 118 > 218, 108, 98 
 
-Resolution: 2K 2560,1440 ; FHD 1920,1080 ; VK обложка 2х 3840,1536 ;
+Resolution: 2K 2560,1440 ; FHD 1920,1080 ; VK обложка 2х 3840,1536; | 4k 3840 x 2160 | 7200 4800
