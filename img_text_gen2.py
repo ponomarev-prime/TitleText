@@ -38,3 +38,7 @@ mask_img_draw.text((tx, ty), THE_TEXT, fill=0, font=font, align='center')
 res_img = Image.composite(fgr_img, bgr_img, mask_img)
 res_img.save(RESULT_IMAGE_FILE)
 #res_img.show()
+
+print('')
+print('OK')
+print('')
