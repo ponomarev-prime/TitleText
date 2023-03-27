@@ -79,6 +79,7 @@ print(bg.__dict__)
 
 bg.imaging()
 
+
 pr = printer(
     str("pr::"+en_ikato[randint(0, 25)]+en_ikato[randint(0, 25)]+en_ikato[randint(0, 25)]),
     config.get("printer", "BACKGROUND_COLOUR"), 
@@ -87,7 +88,7 @@ pr = printer(
     config.get("printer", "THE_TEXT"), 
     config.get("printer", "RESULT_IMAGE_FILE"), 
     config.get("common", "BACKGROUND_IMAGE_FILE")
-)
+    )
 
 print(pr.__dict__)
 

@@ -1,6 +1,6 @@
 ![](data/readme_title_text.png)
 
-## Title Text
+## Title Text | NEXT
 
 Создаёт текст в центре изображения. В качестве изображения используется градиент.
 
