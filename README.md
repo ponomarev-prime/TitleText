@@ -26,3 +26,11 @@ LIGHTGRAY, WHITE = ((191,191,191), (255,255,255))
 BLUE, GREEN, RED = ((0, 0, 255), (0, 255, 0), (255, 0, 0))
 
 Resolution: 2K 2560,1440 ; FHD 1920,1080 ; VK обложка 2х 3840,1536; | 4k 3840 x 2160 | 7200 4800
+
+
+---
+
+```
+app_print_maker.py:60: DeprecationWarning: getsize is deprecated and will be removed in Pillow 10 (2023-07-01). Use getbbox or getlength instead.
+  txt_width, txt_height = font.getsize(self.print_text)  # Size of text w/font if rendered.
+```
