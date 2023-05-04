@@ -18,50 +18,96 @@ RGB https://www.rapidtables.com/web/color/RGB_Color.html
 
 Как это работает:
 
-Настраиваем фон в `config.ini`:
-```
-[img_back]
-RES_WIDTH: 7200 - ширина изображения
-RES_HEIGHT: 4800 - высота изображения
-COLOUR_LEFT: 253, 46, 216 - градиентный цвет слева
-COLOUR_RIGHT: 23, 214, 255 - градиентный цвет справа
-```
+Настраиваем всё в `config.ini`:
 
-Изображение со шрифтом:
 ```
-[text_gen]
-BACKGROUND_COLOUR: 13, 13, 13 - цвет фона изображения
-FONT_FILE: data\fonts\Archangelsk.ttf - файл шрифта
-COEF_FONT_SIZE: 128 - корректировка ширины текста
-THE_TEXT: TitleText - текст
-RESULT_IMAGE_FILE: result\title_text.png - файл изображения
+[backgrounder]
+RES_WIDTH: 1080 - разрешение
+RES_HEIGHT: 1920
+COLOUR_LEFT: 169, 220, 118 - градиент
+COLOUR_RIGHT: 218, 108, 98 
+BACKGROUND_IMAGE_GEN: data\app_background_image.png - сгенерированный фон
 
-[common]
-BACKGROUND_IMAGE_FILE: data\background_image.png - файл фонового изображения
+[printer]
+BACKGROUND_COLOUR: 0 - фон бека для выходного изображения
+FONT_FILE: data\fonts\Montserrat-Black.ttf - шрифт
+COEF_FONT_SIZE: 64 - коеф. растяжения (для широких форматов)
+THE_TEXT: 75,2 - текст
+RESULT_IMAGE_FILE: result\app_title_text.png - выходной файл изображения
+BACKGROUND_IMAGE_READ: data\x.png - можно нстроить таким же как и BACKGROUND_IMAGE_GEN для удобсва
 ```
 ## Цвета
 
-Colours: Git balck: (13, 17, 23) Zero: (0, 0, 0, 0) Google doc black: (27, 27, 27) Google white: (255, 255, 255); 
+### Фон
+Colours: Git balck: `(13, 17, 23)` Zero: `(0, 0, 0, 0)` Google doc black: `(27, 27, 27)` Google white: `(255, 255, 255)`; 
+
+
+BLACK, DARKGRAY, GRAY = `((0,0,0), (63,63,63), (127,127,127))`
+LIGHTGRAY, WHITE = `((191,191,191), (255,255,255))`
+BLUE, GREEN, RED =` ((0, 0, 255), (0, 255, 0), (255, 0, 0))`
+
+Notion dark background: 25, 25, 25
+
+### Гадиент
 
 blue > pink
+```
 COLOUR_LEFT: 253, 46, 216
 COLOUR_RIGHT: 23, 214, 255
+```
 
 green > red
+```
 COLOUR_LEFT: 169, 220, 118
 COLOUR_RIGHT: 218, 108, 98
+```
 
-some colours
-BLACK, DARKGRAY, GRAY = ((0,0,0), (63,63,63), (127,127,127))
-LIGHTGRAY, WHITE = ((191,191,191), (255,255,255))
-BLUE, GREEN, RED = ((0, 0, 255), (0, 255, 0), (255, 0, 0))
+greem > blue
+```
+COLOUR_LEFT: 50, 212, 173
+COLOUR_RIGHT: 0, 99, 169
+```
 
-Resolution: 2K 2560,1440 ; FHD 1920,1080 ; VK обложка 2х 3840,1536; | 4k 3840 x 2160 | 7200 4800
+peqood (mgs v)
+```
+COLOUR_LEFT: 65, 58, 44
+COLOUR_RIGHT: 64, 109, 126
+```
+
+uptrader
+```
+COLOUR_LEFT: 50, 212, 173
+COLOUR_RIGHT: 0, 99, 169
+```
+
+mysql
+```
+COLOUR_LEFT: 0, 125, 125
+COLOUR_RIGHT: 233, 113, 0
+```
+
+A-contract
+```
+COLOUR_LEFT: 0, 150, 57
+COLOUR_RIGHT: 0, 43, 127
+```
+
+ZM
+```
+COLOUR_LEFT: 7, 149, 247
+COLOUR_RIGHT: 255, 149, 0
+```
+
+beget
+```
+COLOUR_LEFT: 1, 121, 205
+COLOUR_RIGHT: 62, 209, 40
+```
+
+### Разрешения 
+2K 2560 x 1440 | FHD 1920 x 1080 | 4k 3840 x 2160 | 
+VK обложка 2х 3840 x 1536 | Insta 1080 x 1920 |
 
 ## Описание
 
-Данный код является примером программы на языке программирования Python, которая создает изображение с градиентным фоном и наносит текст на это изображение. Программа использует библиотеки `configparser`, `random`, `PIL` (Python Imaging Library) для работы с изображениями.
-
-Программа начинается с чтения настроек из файла `app_config.ini` с помощью библиотеки `configparser`. Затем она создает объект класса `backgrounder`, который представляет фоновое изображение. Этот объект инициализируется с помощью значений из файла конфигурации, таких как ширина и высота изображения, цвета левого и правого градиента, и файлового имени фонового изображения. Затем вызывается метод `imaging()`, который создает градиентное изображение и сохраняет его в файл.
-
-Далее программа создает объект класса `printer`, который представляет текст, который будет нанесен на фоновое изображение. Этот объект инициализируется с помощью значений из файла конфигурации, таких как цвет фона, файл шрифта, поправка размера шрифта, текст, имя файла результата и имя файла фонового изображения. Затем вызывается метод `print()`, который открывает фоновое изображение, создает изображение с текстом, комбинирует их вместе с помощью маски и сохраняет результат в файл.
+Скрипт который создает изображение с градиентным фоном и наносит текст на это изображение. Программа использует библиотеки `configparser`, `random`, `PIL` (Python Imaging Library) для работы с изображениями.

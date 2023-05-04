@@ -72,7 +72,7 @@ bg = backgrounder(
     config.get("backgrounder", "RES_HEIGHT"), 
     config.get("backgrounder", "COLOUR_LEFT"), 
     config.get("backgrounder", "COLOUR_RIGHT"),
-    config.get("common", "BACKGROUND_IMAGE_FILE")
+    config.get("backgrounder", "BACKGROUND_IMAGE_GEN")
     )
 
 print(bg.__dict__)
@@ -87,7 +87,7 @@ pr = printer(
     config.get("printer", "COEF_FONT_SIZE"), 
     config.get("printer", "THE_TEXT"), 
     config.get("printer", "RESULT_IMAGE_FILE"), 
-    config.get("common", "BACKGROUND_IMAGE_FILE")
+    config.get("printer", "BACKGROUND_IMAGE_READ")
     )
 
 print(pr.__dict__)
