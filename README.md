@@ -48,6 +48,7 @@ BLUE, GREEN, RED =` ((0, 0, 255), (0, 255, 0), (255, 0, 0))`
 
 Notion dark background: 25, 25, 25
 
+YouTube dark: BACKGROUND_COLOUR: 15, 15, 15
 ### Гадиент
 
 blue > pink
@@ -106,7 +107,7 @@ COLOUR_RIGHT: 62, 209, 40
 
 ### Разрешения 
 2K 2560 x 1440 | FHD 1920 x 1080 | 4k 3840 x 2160 | 
-VK обложка 2х 3840 x 1536 | Insta 1080 x 1920 |
+VK обложка 2х 3840 x 1536 | Insta 1080 x 1920 | YT x2 banner 4096 x 2304
 
 ## Описание
 
