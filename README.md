@@ -127,3 +127,19 @@ VK обложка 2х 3840 x 1536 | Insta 1080 x 1920 | YT x2 banner 4096 x 2304
 ## Шрифты
 
 https://fonts.mega8.ru/
+
+## Примеры
+`data\fonts\28 Days Later Cyr Regular.ttf`
+![](.gitcontent/title_vk_28days.png)
+`data\fonts\Grunge Regular.ttf`
+![](.gitcontent/title_vk_Grunge.png)
+`data\fonts\Runic Regular.ttf`
+![](.gitcontent/title_vk_Runic.png)
+`data\fonts\StarcraftNormal.ttf`
+![](.gitcontent/title_vk_Starcraft.png)
+`data\fonts\terminatorcyr_semi_expandedbold.ttf`
+![](.gitcontent/title_vk_Terminator.png)
+`data\fonts\GOST type A Standard.ttf`
+![](.gitcontent/title_vk_GOST.png)
+
+---
