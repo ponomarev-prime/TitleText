@@ -116,6 +116,14 @@ RES_WIDTH: 3840
 RES_HEIGHT: 1536
 ```
 
+TradingView
+```
+COLOUR_LEFT: 223, 26, 121
+COLOUR_RIGHT: 255, 105, 3
+
+BACKGROUND_COLOUR: 0, 0, 0
+```
+
 ### Разрешения 
 2K 2560 x 1440 | FHD 1920 x 1080 | 4k 3840 x 2160 | 
 VK обложка 2х 3840 x 1536 | Insta 1080 x 1920 | YT x2 banner 4096 x 2304
@@ -142,4 +150,10 @@ https://fonts.mega8.ru/
 `data\fonts\GOST type A Standard.ttf`
 ![](.gitcontent/title_vk_GOST.png)
 
----
+
+# Поправить слеши в `app_config.ini`
+
+Меняем с `\` на `/`
+```
+sed -i 's/\\/\//g' app_config.ini 
+```
