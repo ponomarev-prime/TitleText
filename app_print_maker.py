@@ -25,6 +25,7 @@ def printer(file_bg, col_bg, print_text, file_font, font_corr, file_result):
         bgr_img = bgr_img.convert('RGBA')  # Give iamge an alpha channel.
         bgr_img_width, bgr_img_height = bgr_img.size
         cx, cy = bgr_img_width//2, bgr_img_height//2  # Center of image.
+        
     # Create a transparent foreground to be result of non-text areas.
     fgr_img = Image.new('RGBA', bgr_img.size, color=(tuple(map(int, col_bg.split(', ')))))
     font_size = bgr_img_width//len(print_text)
@@ -32,11 +33,17 @@ def printer(file_bg, col_bg, print_text, file_font, font_corr, file_result):
     print(f'Font size without corr :: {font_size}\n')
     
     font = ImageFont.truetype(file_font, font_size + int(font_corr))
-    txt_width, txt_height = font.getsize(print_text)  # Size of text w/font if rendered.
+
+    left, top, right, bottom = font.getbbox(print_text)  # Size of text w/font if rendered.
+    txt_width = right - left
+    txt_height = bottom - top
+
     tx, ty = cx - txt_width//2, cy - txt_height//2  # Center of text.
+
     mask_img = Image.new('L', bgr_img.size, color=255)
     mask_img_draw = ImageDraw.Draw(mask_img)
     mask_img_draw.text((tx, ty), print_text, fill=0, font=font, align='center')
+
     res_img = Image.composite(fgr_img, bgr_img, mask_img)
     res_img.save(file_result)
 
