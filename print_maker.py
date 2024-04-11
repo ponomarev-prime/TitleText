@@ -1,4 +1,3 @@
-import configparser
 from PIL import Image, ImageDraw, ImageFont
 from logger import logger
 import json
@@ -54,7 +53,8 @@ def printer(file_bg, col_bg, print_text, file_font, font_corr, file_result):
 
 def collect_data_from_config(config_file):
     logger.debug('Collecting data from config file')
-    
+    import configparser
+        
     config = configparser.ConfigParser()
     config.read(config_file, encoding="utf-8-sig")
     
@@ -113,7 +113,7 @@ def make_print(data):
 def main():
     logger.debug('Printer app started')
     
-    # data = collect_data_from_config('config.ini')
+    #data = collect_data_from_config('config.ini')
     data = collect_data_from_json('config.json')
     make_print(data)
 
