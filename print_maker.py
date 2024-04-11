@@ -1,12 +1,15 @@
 import configparser
 from PIL import Image, ImageDraw, ImageFont
+from logger import logger
 
 def interpolate(f_co, t_co, interval):
+    logger.debug('Function interpolate started')
     det_co =[(t - f) / interval for f , t in zip(f_co, t_co)]
     for i in range(interval):
         yield [round(f + det * i) for f, det in zip(f_co, det_co)]
 
 def imaging(res_w, res_h, col_l, col_r, file_bg):
+    logger.debug('Function imaging started')
     imgsize=(int(res_w),int(res_h))
     gradient = Image.new('RGBA', imgsize, color=0)
     draw = ImageDraw.Draw(gradient)
@@ -17,6 +20,7 @@ def imaging(res_w, res_h, col_l, col_r, file_bg):
     gradient.save(file_bg)
 
 def printer(file_bg, col_bg, print_text, file_font, font_corr, file_result):
+    logger.debug('Function printer started')
     # Read the background image and convert to an RGB image with Alpha.
     with open(file_bg, 'rb') as file:
         bgr_img = Image.open(file)
@@ -28,7 +32,7 @@ def printer(file_bg, col_bg, print_text, file_font, font_corr, file_result):
     fgr_img = Image.new('RGBA', bgr_img.size, color=(tuple(map(int, col_bg.split(', ')))))
     font_size = bgr_img_width//len(print_text)
     
-    print(f'Font size without corr :: {font_size}\n')
+    logger.debug(f'Font size without corr is {font_size}')
     
     font = ImageFont.truetype(file_font, font_size + int(font_corr))
 
@@ -43,27 +47,37 @@ def printer(file_bg, col_bg, print_text, file_font, font_corr, file_result):
     mask_img_draw.text((tx, ty), print_text, fill=0, font=font, align='center')
 
     res_img = Image.composite(fgr_img, bgr_img, mask_img)
+
+    logger.debug(f'Saving result image to {file_result}')
     res_img.save(file_result)
 
-def main():
+def collect_data_from_config():
+    logger.debug('Collecting data from config file')
+    
     config = configparser.ConfigParser()
     config.read("config.ini", encoding="utf-8-sig")
     
-    res_w = config.get("backgrounder", "RES_WIDTH")
-    res_h = config.get("backgrounder", "RES_HEIGHT")
-    col_l = config.get("backgrounder", "COLOUR_LEFT")
-    col_r = config.get("backgrounder", "COLOUR_RIGHT")
-    file_bg = config.get("backgrounder", "BACKGROUND_IMAGE_GEN")
+    data = {}
+    data['res_w'] = config.get("backgrounder", "RES_WIDTH")
+    data['res_h'] = config.get("backgrounder", "RES_HEIGHT")
+    data['col_l'] = config.get("backgrounder", "COLOUR_LEFT")
+    data['col_r'] = config.get("backgrounder", "COLOUR_RIGHT")
+    data['file_bg'] = config.get("backgrounder", "BACKGROUND_IMAGE_GEN")
+    data['col_bg'] = config.get("printer", "BACKGROUND_COLOUR")
+    data['print_text'] = config.get("printer", "THE_TEXT")
+    data['file_font'] = config.get("printer", "FONT_FILE")
+    data['font_corr'] = config.get("printer", "COEF_FONT_SIZE")
+    data['file_result'] = config.get("printer", "RESULT_IMAGE_FILE")
     
-    col_bg = config.get("printer", "BACKGROUND_COLOUR")
-    print_text = config.get("printer", "THE_TEXT")
-    file_font = config.get("printer", "FONT_FILE")
-    font_corr = config.get("printer", "COEF_FONT_SIZE")
-    file_result = config.get("printer", "RESULT_IMAGE_FILE")
+    return data
+
+def main():
+    logger.debug('Printer app started')
     
-    imaging(res_w, res_h, col_l, col_r, file_bg)
+    data = collect_data_from_config()
     
-    printer(file_bg, col_bg, print_text, file_font, font_corr, file_result)
+    imaging(data['res_w'], data['res_h'], data['col_l'], data['col_r'], data['file_bg'])
+    printer(data['file_bg'], data['col_bg'], data['print_text'], data['file_font'], data['font_corr'], data['file_result'])
 
 if __name__ == "__main__":
     main()
