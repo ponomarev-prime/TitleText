@@ -1,6 +1,7 @@
 import configparser
 from PIL import Image, ImageDraw, ImageFont
 from logger import logger
+import json
 
 def interpolate(f_co, t_co, interval):
     logger.debug('Function interpolate started')
@@ -51,17 +52,21 @@ def printer(file_bg, col_bg, print_text, file_font, font_corr, file_result):
     logger.debug(f'Saving result image to {file_result}')
     res_img.save(file_result)
 
-def collect_data_from_config():
+def collect_data_from_config(config_file):
     logger.debug('Collecting data from config file')
     
     config = configparser.ConfigParser()
-    config.read("config.ini", encoding="utf-8-sig")
+    config.read(config_file, encoding="utf-8-sig")
     
     data = {}
     data['res_w'] = config.get("backgrounder", "RES_WIDTH")
     data['res_h'] = config.get("backgrounder", "RES_HEIGHT")
+
     data['col_l'] = config.get("backgrounder", "COLOUR_LEFT")
+    logger.debug(f"config.ini :: col_l={data['col_l']}")
     data['col_r'] = config.get("backgrounder", "COLOUR_RIGHT")
+    logger.debug(f"config.ini :: col_r={data['col_r']}")
+
     data['file_bg'] = config.get("backgrounder", "BACKGROUND_IMAGE_GEN")
     data['col_bg'] = config.get("printer", "BACKGROUND_COLOUR")
     data['print_text'] = config.get("printer", "THE_TEXT")
@@ -71,13 +76,46 @@ def collect_data_from_config():
     
     return data
 
+def collect_data_from_json(json_file):
+    logger.debug('Collecting data from JSON file')
+    
+    with open(json_file, 'r') as file:
+        data = json.load(file)
+    
+    backgrounder_data = data.get("backgrounder", {})
+    printer_data = data.get("printer", {})
+    
+    collected_data = {}
+    
+    collected_data['res_w'] = backgrounder_data.get("res_width", "")
+    collected_data['res_h'] = backgrounder_data.get("res_height", "")
+    
+    collected_data['col_l'] = ', '.join(map(str, backgrounder_data.get("colour_left", [])))
+    logger.debug(f"config.json :: col_l={collected_data['col_l']}")
+    collected_data['col_r'] = ', '.join(map(str, backgrounder_data.get("colour_right", [])))
+    logger.debug(f"config.json :: col_r={collected_data['col_r']}")
+    
+    collected_data['file_bg'] = backgrounder_data.get("background_image_gen", "")
+    
+    collected_data['col_bg'] = printer_data.get("background_colour", "")
+    collected_data['print_text'] = printer_data.get("the_text", "")
+    collected_data['file_font'] = printer_data.get("font_file", "")
+    collected_data['font_corr'] = printer_data.get("coef_font_size", "")
+    collected_data['file_result'] = printer_data.get("result_image_file", "")
+    
+    return collected_data
+
+def make_print(data):
+    logger.debug('Function make_print started')
+    imaging(data['res_w'], data['res_h'], data['col_l'], data['col_r'], data['file_bg'])
+    printer(data['file_bg'], data['col_bg'], data['print_text'], data['file_font'], data['font_corr'], data['file_result'])
+
 def main():
     logger.debug('Printer app started')
     
-    data = collect_data_from_config()
-    
-    imaging(data['res_w'], data['res_h'], data['col_l'], data['col_r'], data['file_bg'])
-    printer(data['file_bg'], data['col_bg'], data['print_text'], data['file_font'], data['font_corr'], data['file_result'])
+    # data = collect_data_from_config('config.ini')
+    data = collect_data_from_json('config.json')
+    make_print(data)
 
 if __name__ == "__main__":
     main()
