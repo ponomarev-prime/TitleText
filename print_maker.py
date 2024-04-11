@@ -1,8 +1,6 @@
 import configparser
 from PIL import Image, ImageDraw, ImageFont
 
-
-
 def interpolate(f_co, t_co, interval):
     det_co =[(t - f) / interval for f , t in zip(f_co, t_co)]
     for i in range(interval):
@@ -49,7 +47,7 @@ def printer(file_bg, col_bg, print_text, file_font, font_corr, file_result):
 
 def main():
     config = configparser.ConfigParser()
-    config.read("app_config.ini", encoding="utf-8-sig")
+    config.read("config.ini", encoding="utf-8-sig")
     
     res_w = config.get("backgrounder", "RES_WIDTH")
     res_h = config.get("backgrounder", "RES_HEIGHT")
