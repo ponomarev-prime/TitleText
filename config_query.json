@@ -1,0 +1,25 @@
+{
+    "backgrounder": {
+        "res_width": "1920",
+        "res_height": "1080",
+        "colour_left": [
+            223,
+            26,
+            121
+        ],
+        "colour_right": [
+            255,
+            105,
+            3
+        ],
+        "background_image_gen": "data/app_background_image.png"
+    },
+    "printer": {
+        "background_colour": "244",
+        "font_file": "data/fonts/28 Days Later Cyr Regular.ttf",
+        "coef_font_size": "96",
+        "the_text": "Test",
+        "result_image_file": "result/app_title_text.png",
+        "background_image_read": "data/app_background_image.png"
+    }
+}
