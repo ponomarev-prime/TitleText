@@ -18,7 +18,7 @@ def ini_to_json(ini_file_path):
     return data
 
 def main():
-    ini_file_path = 'app_config.ini'  # Замените на путь к вашему .ini файлу
+    ini_file_path = 'config.ini'  # Замените на путь к вашему .ini файлу
     json_data = ini_to_json(ini_file_path)
 
     json_file_path = 'config.json'  # Путь к выходному JSON файлу
