@@ -157,3 +157,9 @@ https://fonts.mega8.ru/
 ```
 sed -i 's/\\/\//g' app_config.ini 
 ```
+
+## query
+
+```txt
+curl -s "localhost:8000/titlegen?the_text=PONOMAREV.PRIME&background_colour=0"
+```
